@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29-abr-2017, 13:58:53
+    Author     : Eduardo
+*/
+
+body{
+    font-family: Verdana;
+    background-color: red;
+}
+
+#pieindex{
+    padding: 5px 0px 5px 0px;
+}
+ 
+#pieindex div{
+    font: normal normal bold 12px Verdana, Geneva, Tahoma, sans-serif;
+    float: left;
+    width: 237.50px;
+    color: #6B0303;
+}
+ 
+#pieindex ul{
+    font: normal normal normal 9.5px Verdana, Geneva, Tahoma, sans-serif;
+    list-style: none;
+    color: #000000;
+}

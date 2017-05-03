@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Agenda Digital</title>
+        <style type="text/css">
+            body{   
+                font-family: Verdana;
+            }
+
+            #pepe{
+                background-size: 50px;
+                position: absolute;
+                left: 1000px;
+            }
+            #tablaDatos{
+                position:absolute;
+            }
+            #eventos{
+                margin-left: 2%;
+                width: 95%;
+                float: left;
+                margin-bottom: 2%;
+            }
+            #cabecera{
+                width: 98%;
+                margin: 2%;
+            }
+            #calendario{
+                margin-left: 5%;
+                width: 25%;
+                float: left;
+            }
+            
+            #imagen{
+                float: left;
+                margin-left: 2%;
+                width: 19%;
+            }
+            #titulo{
+                margin-left: 2%;
+                width: 98%;
+            }
+            #sur{
+                float: left;
+                font: serif;
+                font-weight: bold;
+                font-size: 250%;
+                margin-top: 1%;
+                width: 45%;
+                margin-left: 5%;
+            }
+            #sur a:hover{
+                text-decoration: none;
+                color: black;
+            }
+            #sur a{
+                text-decoration: none;
+                color: black;
+            }
+            #footer{
+                clear: both;
+            }
+            #contacto{
+                width: 200px;
+                text-align: right;
+                float:right;
+            }
+            #inf{
+                float: left;
+                
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        <div id="titulo" >
+            <div id="imagen">
+                <a title="Agenda digital Diario SUR" href="faces/Principal.xhtml"><img src="imagenes/diario_sur.gif" alt="" /></a>
+            </div>
+            <div id="sur">
+                <a title="Agenda digital Diario SUR" href="faces/Principal.xhtml">Agenda Digital Diario SUR</a>
+            </div>
+        </div>
+        
+        <br/><br/><br/><br/>
+        
+        <div id="cabecera">
+            <h:form>  
+                <p:growl id="messages"/>
+
+                <p:menubar>
+                    <p:menuitem value="Inicio" url="faces/Principal.xhtml" icon="ui-icon-document" />
+
+                    <p:submenu label="Tipos de Eventos" icon="ui-icon-pencil" >
+                        <p:menuitem value="Para niños" url="faces/VisualizarEvento.xhtml"/>
+                        <p:menuitem value="Monólogos" url="faces/VisualizarEvento.xhtml"/>
+                        <p:submenu label="Deportivos">
+                            <p:menuitem value="Fútbol" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Baloncesto" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Tenis" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Natación" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Danzas">
+                            <p:menuitem value="Ballet" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Flamenco" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Culturales">
+                            <p:menuitem value="Museos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Teatro" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Exposiciones" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Música">
+                            <p:menuitem value="Conciertos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Festivales" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Musicales" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Turísticos">
+                            <p:menuitem value="Visitas Guiadas" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Parques Temáticos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Eventos Profesionales">
+                            <p:menuitem value="Congresos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Conferencias" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Ferias" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                    </p:submenu>
+
+                    <p:submenu label="Calendario" icon="ui-icon-calendar">
+                        <p:menuitem value="Hoy" url="#" />
+                        <p:menuitem value="Esta semana" url="#" />
+                        <p:menuitem value="Este mes" url="#" />
+                    </p:submenu>
+
+                    <p:menuitem value="Búsqueda Avanzada" url="faces/buscadorN.xhtml" icon="ui-icon-search"/>
+
+                    <c:choose>
+                        <c:when test="false">
+                            <p:menuitem value="Iniciar Sesión" url="faces/InicioSesion.xhtml" icon="ui-icon-contact"/>
+                        </c:when>
+                        <c:otherwise>
+                            <p:menuitem value="Mi Perfil" icon="ui-icon-contact" url="faces/PrePerfil.xhtml"/>
+                            <p:menuitem value="Cerrar Sesión" icon="ui-icon-close"/>
+                        </c:otherwise>
+                    </c:choose>
+
+
+                    <f:facet name="options">
+                        <p:inputText style="margin-right:10px" placeholder="Buscador"/>
+                        <p:commandButton type="button" value="Buscar" icon="ui-icon-search" />
+                    </f:facet>
+                </p:menubar>
+            </h:form>
+        </div>
+        
+        <div id="cuerpo">
+            <div id="eventos">
+                
+                
+                <div id ="tablaDatos">
+                    <p:panel id="basic" header="Resultados de la búsqueda" style="margin-bottom:20px">
+                        <h:dataTable value="#{buscarController.lista}" var="event" cellpadding="2px">
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Nombre"/>
+                            </f:facet>
+                            <h:outputLabel value="#{event.nombre}"/>
+                            
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value=""/>
+                            </f:facet>
+                            <h:graphicImage value="imagenes/#{event.idfoto}.jpg" height="80" width="80" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Tipo"/>
+                            </f:facet>
+                            <h:outputLabel value="#{event.tipo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Fecha"/>
+                            </f:facet>
+                            <h:outputLabel value="#{event.fecha}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Hora"/>
+                            </f:facet>
+                            <h:outputLabel value="#{event.hora}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputLabel value="Provincia"/>
+                            </f:facet>
+                            <h:outputLabel value="#{event.provincia}"/>
+                        </h:column>
+                    </h:dataTable>
+                        </p:panel>
+                </div>
+                    
+                
+                <div id="pepe">
+                    <h:form> 
+                        <p:panel id="basic" header="Buscador" >
+                            
+                       
+                        <table style="background: lightgray;">
+                            
+                            <tr>
+                                <td colspan="2" align="right">
+                                    <h:inputText size="28" value="#{buscarController.texto}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:selectOneMenu value = "#{buscarController.provincia}" >
+                                        <f:selectItem itemValue = "nada2" itemLabel="Provincia" />
+                                        <f:selectItem itemValue = "Málaga" itemLabel="Málaga" />
+                                        <f:selectItem itemValue = "Sevilla" itemLabel="Sevilla" />
+                                        <f:selectItem itemValue = "Córdoba" itemLabel="Córdoba" />
+                                        <f:selectItem itemValue = "Granada" itemLabel="Granada" />
+                                        <f:selectItem itemValue = "Jaen" itemLabel="Jaen" />
+                                        <f:selectItem itemValue = "Cádiz" itemLabel="Cádiz" />
+                                        <f:selectItem itemValue = "Huelva" itemLabel="Huelva" />
+                                        <f:selectItem itemValue = "Almería" itemLabel="Almería" />
+                                    </h:selectOneMenu>
+
+                                </td>
+                                <td>
+                                    <h:selectOneMenu value = "#{buscarController.tipo}" >
+                                        <f:selectItem itemValue = "nada" itemLabel="Tipo de evento" />
+                                        <f:selectItem itemValue = "Deporte" itemLabel="Deporte" />
+                                        <f:selectItem itemValue = "Ocio" itemLabel="Ocio" />
+                                        <f:selectItem itemValue = "Cultura" itemLabel="Cultura" />
+                                        <f:selectItem itemValue = "Concierto" itemLabel="Concierto" />
+                                        <f:selectItem itemValue = "Festival" itemLabel="Festival" />
+                                        <f:selectItem itemValue = "Cine" itemLabel="Cine" />
+                                    </h:selectOneMenu>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right">
+                                    <h:commandButton  value="Buscar" action="#{buscarController.buscar()}"/>
+                                </td>
+                            </tr>
+                        </table>
+ </p:panel>
+                </h:form>
+                    </div>
+            </div>
+            
+            
+       
+        
+         </div>
+        
+        
+        
+        <div id="footer">
+            <div id="inf">
+                
+            </div>
+            
+            <div id="contacto">
+                <a title="Contacto" href="#"><img src="email.ico" alt="" /></a>
+                <a title="Twitter" href="#"><img src="twitter.ico" alt="" /></a>
+                <a title="Facebook" href="#"><img src="facebook.ico" alt="" /></a>
+            </div>
+            
+        </div>
+    </h:body>
+</html>

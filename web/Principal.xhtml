@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Agenda Digital</title>
+        <style type="text/css">
+            body{   
+                font-family: Verdana;
+            }
+
+            
+            #eventos{
+                margin-left: 2%;
+                width: 60%;
+                float: left;
+                margin-bottom: 2%;
+            }
+            #cabecera{
+                width: 98%;
+                margin: 2%;
+            }
+            #calendario{
+                margin-left: 10%;
+                width: 25%;
+                float: left;
+            }
+            
+            #imagen{
+                float: left;
+                margin-left: 2%;
+                width: 19%;
+            }
+            #titulo{
+               
+                margin-left: 2%;
+                width: 98%;
+            }
+            #sur{
+                float: left;
+                font: serif;
+                font-weight: bold;
+                font-size: 250%;
+                margin-top: 1%;
+                width: 45%;
+                margin-left: 5%;
+            }
+            #sur a:hover{
+                text-decoration: none;
+                color: black;
+            }
+            #sur a{
+                text-decoration: none;
+                color: black;
+            }
+            #footer{
+                
+                clear: both;
+            }
+            #contacto{
+                width: 200px;
+                text-align: right;
+                float:right;
+            }
+            #inf{
+                float: left;
+                
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        <div id="titulo" >
+            <div id="imagen">
+                <a title="Agenda digital Diario SUR" href="faces/Principal.xhtml"><img src="imagenes/diario_sur.gif" alt="" /></a>
+            </div>
+            <div id="sur">
+                <a title="Agenda digital Diario SUR" href="faces/Principal.xhtml">Agenda Digital Diario SUR</a>
+            </div>
+        </div>
+        
+        <br/><br/><br/><br/>
+        
+        <div id="cabecera">
+            <h:form>  
+                <p:growl id="messages"/>
+
+                <p:menubar>
+                    <p:menuitem value="Inicio" url="faces/Principal.xhtml" icon="ui-icon-document" />
+
+                    <p:submenu label="Tipos de Eventos" icon="ui-icon-pencil" >
+                        <p:menuitem value="Para niños" url="faces/VisualizarEvento.xhtml"/>
+                        <p:menuitem value="Monólogos" url="faces/VisualizarEvento.xhtml"/>
+                        <p:submenu label="Deportivos">
+                            <p:menuitem value="Fútbol" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Baloncesto" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Tenis" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Natación" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Danzas">
+                            <p:menuitem value="Ballet" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Flamenco" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Culturales">
+                            <p:menuitem value="Museos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Teatro" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Exposiciones" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Música">
+                            <p:menuitem value="Conciertos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Festivales" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Musicales" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Turísticos">
+                            <p:menuitem value="Visitas Guiadas" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Parques Temáticos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Eventos Profesionales">
+                            <p:menuitem value="Congresos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Conferencias" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Ferias" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                    </p:submenu>
+
+                    <p:submenu label="Calendario" icon="ui-icon-calendar">
+                        <p:menuitem value="Hoy" url="#" />
+                        <p:menuitem value="Esta semana" url="#" />
+                        <p:menuitem value="Este mes" url="#" />
+                    </p:submenu>
+
+                    <p:menuitem value="Búsqueda Avanzada" url="faces/buscadorN.xhtml" icon="ui-icon-search"/>
+
+                    <c:choose>
+                        <c:when test="false">
+                            <p:menuitem value="Iniciar Sesión" url="faces/InicioSesion.xhtml" icon="ui-icon-contact"/>
+                        </c:when>
+                        <c:otherwise>
+                            <p:menuitem value="Mi Perfil" icon="ui-icon-contact" url="faces/PrePerfil.xhtml"/>
+                            <p:menuitem value="Cerrar Sesión" icon="ui-icon-close"/>
+                        </c:otherwise>
+                    </c:choose>
+
+
+                    <f:facet name="options">
+                        <p:inputText style="margin-right:10px" placeholder="Buscador"/>
+                        <p:commandButton type="button" value="Buscar" icon="ui-icon-search" />
+                    </f:facet>
+                </p:menubar>
+            </h:form>
+        </div>
+        
+        <div id="cuerpo">
+            <div id="eventos">
+                <h:form>
+                    <p:growl id="msgs" showDetail="true" />
+
+                    <p:panel id="basic" header="Fiesta de los colores" footer="6 de junio" style="margin-bottom:20px">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <img src="imagenes/imagen1.jpg" width="200" height="130" alt="" />
+                            <h:outputText
+                                value="Una gran fiesta muy divertida y colorida..." />
+                        </h:panelGrid>
+                    </p:panel>
+
+                    <p:panel id="toggleable" header="Concierto ESTOPAA" toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel" style="margin-bottom:20px">
+
+                        <p:ajax event="close" listener="#{panelView.onClose}" update="msgs" />
+                        <p:ajax event="toggle" listener="#{panelView.onToggle}" update="msgs" />
+
+                         <h:panelGrid columns="2" cellpadding="10">
+                            <img src="imagenes/imagen2.jpg" width="200" height="130" alt="" />
+                            <h:outputText value="ESTOPAA viene a Málaga, no te lo puedes perder" />
+                        </h:panelGrid>
+
+                        <f:facet name="options">
+                            <p:menu>
+                                <p:submenu label="Settings">
+                                    <p:menuitem value="Toggle" url="#" icon="ui-icon-newwin" onclick="PF('panel').toggle()" />
+                                    <p:menuitem value="Remove" url="#" icon="ui-icon-close" onclick="PF('panel').close()" />
+                                </p:submenu>
+                            </p:menu>
+                        </f:facet>
+                    </p:panel>
+
+                    <p:panel id="custom" header="Museo Freddie Mercury" style="margin-bottom:20px">
+                        <h:panelGrid columns="2" cellpadding="10">
+                                 <img src="imagenes/imagen3.jpg" width="200" height="130" alt="" />
+                                <h:outputText value="Ven a ver el museo Show must go on" />
+                            </h:panelGrid>
+
+                        <f:facet name="actions">
+                            <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></h:commandLink>
+                            <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-star" /></h:commandLink>
+                        </f:facet>
+                    </p:panel>
+
+                    <p:panel id="horizontal" header="Festival Los alamaas" toggleable="true" toggleOrientation="horizontal">
+                        <h:panelGrid columns="2" cellpadding="10">
+                             <img src="imagenes/imagen4.jpg" width="200" height="130" alt="" />
+                            <h:outputText
+                                value="Disfruta con tus colegas de este gran festival, no te lo puedes perder" />
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </div>
+            
+            
+            <div id="calendario">
+                
+                <h:form id="form">
+                    <p:growl id="msgs" showDetail="true" />
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
+                    </h:panelGrid>
+
+                    <p:commandButton value="Submit" update="msgs" actionListener="#{calendarView.click}" icon="ui-icon-check" />
+
+                    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                            <h:outputText value="#{calendarView.date1}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+
+                        </p:panelGrid>
+                    </p:dialog>
+                </h:form>
+                
+            </div>
+       
+        
+         </div>
+        
+        
+        
+        <div id="footer">
+            <div id="inf">
+                Copyright
+            </div>
+            
+            <div id="contacto">
+                <a title="Contacto" href="#"><img src="email.ico" alt="" /></a>
+                <a title="Twitter" href="#"><img src="twitter.ico" alt="" /></a>
+                <a title="Facebook" href="#"><img src="facebook.ico" alt="" /></a>
+            </div>
+            
+        </div>
+    </h:body>
+</html>
+

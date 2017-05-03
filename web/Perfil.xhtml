@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Agenda Digital</title>
+        <style type="text/css">
+            body{   
+                font-family: Verdana;
+            }
+
+            #pepe{
+                background-size: 50px;
+                position: relative;
+                left: 1000px;
+            }
+            #tablaDatos{
+                position:absolute;
+            }
+            #eventos{
+                margin-left: 2%;
+                width: 95%;
+                float: left;
+                margin-bottom: 2%;
+            }
+            #cabecera{
+                width: 98%;
+                margin: 2%;
+            }
+            #calendario{
+                margin-left: 5%;
+                width: 25%;
+                float: left;
+            }
+            
+            #imagen{
+                float: left;
+                margin-left: 2%;
+                width: 19%;
+            }
+            #titulo{
+                margin-left: 2%;
+                width: 98%;
+            }
+            #sur{
+                float: left;
+                font: serif;
+                font-weight: bold;
+                font-size: 250%;
+                margin-top: 1%;
+                width: 45%;
+                margin-left: 5%;
+            }
+            #sur a:hover{
+                text-decoration: none;
+                color: black;
+            }
+            #sur a{
+                text-decoration: none;
+                color: black;
+            }
+            #footer{
+                clear: both;
+            }
+            #contacto{
+                width: 200px;
+                text-align: right;
+                float:right;
+            }
+            #inf{
+                float: left;
+                
+            }
+        </style>
+    </h:head>
+    <h:body>
+        
+        <div id="titulo" >
+            <div id="imagen">
+                <a title="Agenda digital Diario SUR" href="Principal.xhtml"><img src="diario_sur.gif" alt="" /></a>
+            </div>
+            <div id="sur">
+                <a title="Agenda digital Diario SUR" href="Principal.xhtml">Agenda Digital Diario SUR</a>
+            </div>
+        </div>
+        
+        <br/><br/><br/><br/>
+        
+        <div id="cabecera">
+            <h:form>  
+                <p:growl id="messages"/>
+
+                <p:menubar>
+                    <p:menuitem value="Inicio" url="faces/Principal.xhtml" icon="ui-icon-document" />
+
+                    <p:submenu label="Tipos de Eventos" icon="ui-icon-pencil" >
+                        <p:menuitem value="Para niños" url="faces/VisualizarEvento.xhtml"/>
+                        <p:menuitem value="Monólogos" url="faces/VisualizarEvento.xhtml"/>
+                        <p:submenu label="Deportivos">
+                            <p:menuitem value="Fútbol" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Baloncesto" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Tenis" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Natación" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Danzas">
+                            <p:menuitem value="Ballet" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Flamenco" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Culturales">
+                            <p:menuitem value="Museos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Teatro" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Exposiciones" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Música">
+                            <p:menuitem value="Conciertos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Festivales" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Musicales" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Turísticos">
+                            <p:menuitem value="Visitas Guiadas" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Parques Temáticos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Eventos Profesionales">
+                            <p:menuitem value="Congresos" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Conferencias" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Ferias" url="faces/VisualizarEvento.xhtml" />
+                            <p:menuitem value="Otros..." url="faces/VisualizarEvento.xhtml" />
+                        </p:submenu>
+                    </p:submenu>
+
+                    <p:submenu label="Calendario" icon="ui-icon-calendar">
+                        <p:menuitem value="Hoy" url="#" />
+                        <p:menuitem value="Esta semana" url="#" />
+                        <p:menuitem value="Este mes" url="#" />
+                    </p:submenu>
+
+                    <p:menuitem value="Búsqueda Avanzada" url="faces/buscadorN.xhtml" icon="ui-icon-search"/>
+
+                    <c:choose>
+                        <c:when test="false">
+                            <p:menuitem value="Iniciar Sesión" url="faces/InicioSesion.xhtml" icon="ui-icon-contact"/>
+                        </c:when>
+                        <c:otherwise>
+                            <p:menuitem value="Mi Perfil" icon="ui-icon-contact" url="faces/PrePerfil.xhtml"/>
+                            <p:menuitem value="Cerrar Sesión" icon="ui-icon-close"/>
+                        </c:otherwise>
+                    </c:choose>
+
+
+                    <f:facet name="options">
+                        <p:inputText style="margin-right:10px" placeholder="Buscador"/>
+                        <p:commandButton type="button" value="Buscar" icon="ui-icon-search" />
+                    </f:facet>
+                </p:menubar>
+            
+        
+                <br/>      
+    <p:growl id="growl" sticky="true" showDetail="true"/>
+ 
+    
+        <p:tab id="personal" title="Perfil personal">
+            <p:panel header="Detalles personales">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    
+                    <h:form enctype="multipart/form-data">
+                    <p:growl id="messages" showDetail="true" />
+                    <p:fileUpload value="#{userWizard.file1}" mode="simple"/>
+                    <p:commandButton value="Editar foto" ajax="false" actionListener="#{fileUploadView.upload}" disabled="true" />
+                    </h:form>
+                    
+                    <div>
+                    
+                    
+                    <h:outputText value="Nombre: " />
+                    <p:inputText value="#{userWizard.user.firstname}" />
+ 
+                    <h:outputText value="Apellido: " />
+                    <p:inputText value="#{userWizard.user.lastname}" />
+ 
+                    <h:outputText value="Edad: " />
+                    <p:inputText value="#{userWizard.user.age}" />
+         
+                    <h:outputText value="Dirección: " />
+                    <p:inputText value="#{userWizard.user.street}" />
+ 
+                    <h:outputText value="Código Postal: " />
+                    <p:inputText value="#{userWizard.user.postalCode}" />
+ 
+                    <h:outputText value="Ciudad: " />
+                    <p:inputText value="#{userWizard.user.city}" />
+ 
+                    <h:outputText value="Teléfono: " />
+                    <p:inputText value="#{userWizard.user.phone}"/>
+                    
+                    <h:outputText value = "Elige tus eventos favoritos: "/>
+                    <p:selectManyCheckbox id="basic" value="#{UserWizard.seleccionarTipo}">
+                    <f:selectItem itemLabel="Monólogos" itemValue="Monólogos" />
+                    <f:selectItem itemLabel="Deportivos" itemValue="Deportivos" />
+                    <f:selectItem itemLabel="Danzas" itemValue="Danzas" />
+                    <f:selectItem itemLabel="Culturales" itemValue="Culturales" />
+                    <f:selectItem itemLabel="Ámbitos musicales" itemValue="Ámbitos musicales" />
+                    <f:selectItem itemLabel="Eventos turísticos" itemValue="Eventos turísticos" />
+                    <f:selectItem itemLabel="Eventos profesionales" itemValue="Eventos profesionales" />
+                    <f:selectItem itemLabel="Otros" itemValue="Otros" />
+                    </p:selectManyCheckbox>
+                    
+ 
+                    <h:outputText value="Información adicional: " />
+                    <p:inputTextarea rows="6" cols="50" value="#{userWizard.user.info}"/>
+                    
+                    </div>
+                  
+                    <p:commandButton value="Guardar datos" actionListener="#{guardarPerfil.guardar}" icon="ui-icon-check" update="growl" process="@this"/>
+                    
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+    </h:form>
+        </div> 
+    </h:body>
+    
+</html>
+
